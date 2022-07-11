@@ -1,19 +1,23 @@
-# myblog
+```## 介绍
+这是一个基于Vue3的博客系统。  
+后台用 Koa，各种数据全都存到语雀里  
+## 愿景
+以最最简单的方式实现一个功能强大的博客系统。    
+不需要后台管理系统，全都基于语雀。  
 
-## Project setup
-```
-yarn install
-```
+# 版本计划
+### v 1  先做出来
+> 一期的目标很简单，实现显示博客列表，点击跳转到语雀  
+- 写死的博客首页
+- 显示列表和跳转
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+### v 2  简单的管理功能
+- 支持标签  
+- 支持配置首页标题，头像，介绍等文字  
 
-### Compiles and minifies for production
-```
-yarn build
-```
+### v3   实现可迁移
+让别人也能很方便的使用
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
+# 进度情况 
+准备开始做  2022.07.11
