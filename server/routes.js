@@ -15,7 +15,7 @@ Router.get('/articles', async ctx => {
         let r = await yuQue.getList()
         ctx.body = {
             code: 200,
-            data: r.data
+            data: r.data.data
         }
     } catch (e) {
         console.log("出错了")
