@@ -7,7 +7,12 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "core-js": "^3.8.3",
+    "koa": "^2.13.4",
+    "koa-json": "^2.0.2",
+    "koa-router": "^11.0.1",
+    "koa-static": "^5.0.0",
     "vue": "^3.2.13"
   },
   "devDependencies": {
