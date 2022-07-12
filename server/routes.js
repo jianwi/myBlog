@@ -26,5 +26,16 @@ Router.get('/articles', async ctx => {
     }
 })
 
+// 获取配置
+Router.get('/config', async ctx => {
+    ctx.body = {
+        code: 200,
+        data: {
+            userName: config.yuQue.userName,
+            zone: config.yuQue.zone
+        }
+    }
+})
+
 
 module.exports = Router

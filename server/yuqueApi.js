@@ -5,15 +5,25 @@ class YueQue {
     #user_name
     #zone
 
-    constructor({userName,zone,token}) {
+    constructor({userName, zone, token}) {
         this.#token = token
         this.#user_name = userName
         this.#zone = zone
     }
 
     async getList() {
-        const url = `https://yuque.com/api/v2/repos/${this.#user_name}/${this.#zone}/toc`
-        return  axios.get(url, {
+        const url = `https://yuque.com/api/v2/repos/${this.#user_name}/${this.#zone}/docs`
+        return axios.get(url, {
+                headers: {
+                    'X-Auth-Token': this.#token
+                }
+            }
+        )
+    }
+
+    async getDoc(slug) {
+        const url = `https://yuque.com/api/v2/repos/${this.#user_name}/${this.#zone}/docs/${slug}`
+        return axios.get(url, {
                 headers: {
                     'X-Auth-Token': this.#token
                 }

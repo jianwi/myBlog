@@ -1,25 +1,40 @@
 <template>
-  <Index></Index>
+  <component :is="currentComponent"></component>
 </template>
 
-<script>
+<script setup>
+import {ref, onBeforeMount} from "vue";
 import Index from "@/components/Home/Index";
+import Article from "@/components/Article/Index"
 
-export default {
-  name: 'App',
-  components: {
-    Index
-  }
+const currentComponent = ref(Index)
+
+const routes = {
+  '/': Index,
+  'article': Article,
 }
+
+
+window.addEventListener("hashchange",function (res) {
+  checkRoute()
+})
+
+function checkRoute() {
+  let path = window.location.hash.slice(1)
+  console.log(path)
+  const route = path.split("?")[0]
+  console.log("route",route)
+  currentComponent.value = routes[route] || Index
+}
+
+onBeforeMount(()=>{
+  checkRoute()
+})
+
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  margin: 0;
 }
 </style>

@@ -11,3 +11,7 @@ function request(url,method='get',data) {
 export function getArticles() {
     return request("/api/articles")
 }
+
+export function getConfig() {
+    return request("/api/config")
+}
