@@ -1,7 +1,7 @@
 <template>
   <div v-for="item in list">
     <div style="margin: 30px">
-      <h1 class="title" @click="toArticle" :data-slug="item.slug" :data-title="item.title">
+      <h1 class="title" @click="toArticle" :data-slug="item.slug" :data-title="item.title" :data-desc="item.description">
         {{item.title}}
       </h1>
       <p class="desc">{{item.published_at}} </p>
@@ -33,10 +33,16 @@ function toArticle(e){
   console.log(e)
   console.log(e.currentTarget)
   console.log(e.currentTarget.dataset.slug)
-  const {slug,title} = e.currentTarget.dataset
+  const {slug,title,desc} = e.currentTarget.dataset
+  console.log(desc)
+  if (/^\s*###网页html###/.test(desc)){
+    console.log("去渲染")
+    window.open("/api/page?slug="+slug,"_self")
+    return
+  }
   app.route.to("article", {
     slug,
-    title
+    title,
   })
 }
 
