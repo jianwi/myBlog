@@ -26,6 +26,19 @@ Router.get('/articles', async ctx => {
     }
 })
 
+// 渲染网页
+Router.get('/page', async ctx => {
+    try {
+        let r = await yuQue.getDoc(ctx.query.slug)
+        let text = r.data.data.body.match(/```html([\W\w]*)```/i)[1]
+        ctx.type = "html";
+        ctx.body = text
+    }catch (e) {
+        console.log("出错了？？",e)
+        ctx.body = "出错了"
+    }
+})
+
 // 获取配置
 Router.get('/config', async ctx => {
     ctx.body = {

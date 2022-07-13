@@ -22,7 +22,7 @@ class YueQue {
     }
 
     async getDoc(slug) {
-        const url = `https://yuque.com/api/v2/repos/${this.#user_name}/${this.#zone}/docs/${slug}`
+        const url = `https://yuque.com/api/v2/repos/${this.#user_name}/${this.#zone}/docs/${slug}?raw=1`
         return axios.get(url, {
                 headers: {
                     'X-Auth-Token': this.#token
