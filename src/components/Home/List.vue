@@ -1,12 +1,15 @@
 <template>
   <div v-for="item in list">
-    <div style="margin: 30px" @click="toArticle" :data-slug="item.slug" :data-title="item.title">
-      {{item.title}}
-      {{item.description}}
-      {{item.published_at}}
-      字数： {{item.word_count}}
+    <div style="margin: 30px">
+      <h1 class="title" @click="toArticle" :data-slug="item.slug" :data-title="item.title">
+        {{item.title}}
+      </h1>
+      <p class="desc">{{item.published_at}} </p>
+      <p>
+        {{item.description}}
+      </p>
+       {{Math.ceil(item.word_count/2/60)}} 分钟
       阅读量: {{item.read_count}}
-      点赞量：{{item.like_count}}
     </div>
   </div>
 </template>
@@ -27,8 +30,10 @@ async function loadList() {
 }
 
 function toArticle(e){
-  console.log(e.target.dataset.slug)
-  const {slug,title} = e.target.dataset
+  console.log(e)
+  console.log(e.currentTarget)
+  console.log(e.currentTarget.dataset.slug)
+  const {slug,title} = e.currentTarget.dataset
   app.route.to("article", {
     slug,
     title
@@ -39,5 +44,15 @@ loadList()
 </script>
 
 <style scoped>
-
+.title{
+  color: #5676ff;
+}
+.title:hover{
+  text-decoration: #5676ff solid;
+  color: #333;
+}
+.desc{
+  color: #666;
+  font-size: .8rem;
+}
 </style>
