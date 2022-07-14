@@ -1,9 +1,12 @@
 <template>
-  <h1>{{title}}</h1>
-  <div v-if="loading">
-    加载中
-  </div>
-  <iframe :style="loading?'opacity:0':''" :src="src" width="100%" :height="height" frameborder="0"></iframe>
+  <header></header>
+  <h1 class="title">{{title}}</h1>
+  <article>
+    <div v-if="loading">
+      加载中
+    </div>
+    <iframe :style="loading?'opacity:0':'overflow:none;'" :src="src" width="100%" :height="height" frameborder="0"></iframe>
+  </article>
 </template>
 
 <script setup>
@@ -21,10 +24,14 @@ const title = ref(decodeURI(query.title))
 const loading = ref(true)
 
 window.addEventListener("message",function (e) {
-  if (e.origin === "https://www.yuque.com" && e.data.type === "doc_ready"){
-    console.log(e.data.payload)
-    height.value = e.data.payload.height
-    loading.value = false
+  if (e.origin === "https://www.yuque.com"){
+    if (!e.data.payload){
+      return
+    }
+    if (e.data.payload.height){
+      height.value = e.data.payload.height
+      loading.value = false
+    }
   }
 })
 
@@ -32,5 +39,9 @@ window.addEventListener("message",function (e) {
 </script>
 
 <style scoped>
-
+article{
+  width: 96vw;
+  max-width: 900px;
+  margin: auto;
+}
 </style>
