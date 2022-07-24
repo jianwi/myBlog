@@ -2,10 +2,9 @@
   <div>
     <header>
       <div>
-        <h1>小杜同学的博客</h1>
-        <p>学习新思想，争做新青年！</p>
+        <h1>简微的博客</h1>
+        <p>简单且微不足道，不足为外人道也！</p>
       </div>
-
     </header>
     <main class="main">
       <div class="list">
@@ -15,6 +14,10 @@
         <Aside></Aside>
       </div>
     </main>
+    <footer class="footer">
+      myBlog@2022
+      <a href="http://beian.miit.gov.cn/">陕ICP备17019361号-2</a>
+    </footer>
   </div>
 
 </template>
@@ -28,16 +31,27 @@
 </script>
 
 <style scoped>
+header{
+  text-align: center;
+}
 .main{
   display: flex;
+  justify-content: space-around;
 }
 .list{
-  flex-basis: 100px;
-  flex-grow: 2;
-  flex-shrink: 0;
+  min-width: 380px;
 }
 .aside{
   flex: 0;
   flex-basis: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.footer{
+  text-align: center;
+  padding: 30px;
+  font-size: .9rem;
+  line-height: 1.5;
 }
 </style>

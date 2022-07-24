@@ -37,4 +37,13 @@ onBeforeMount(()=>{
 #app {
   margin: 0;
 }
+a{
+  text-decoration: none;
+  color: #52616a;
+  padding: 5px;
+  transition: .5s all;
+}
+a:hover{
+  background: #f0f5f9;
+}
 </style>
